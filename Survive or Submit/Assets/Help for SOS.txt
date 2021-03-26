@@ -1,0 +1,11 @@
+-array of tiles (storing location)
+-set a SPECIFIC number of obstacles to be spawned
+-on spawning new object, check if it overlaps another collider, if so, delete
+-consider using chunks to prevent loading everything at one time
+
+
+useful links:
+https://www.youtube.com/c/SebastianLague/playlists
+https://www.gdcvault.com/play/1025191/Math-for-Game-Programmers-Digging
+https://learn.unity.com/project/procedural-cave-generation-tutorial
+https://pvigier.github.io/2019/06/23/vagabond-dungeon-cave-generation.html
