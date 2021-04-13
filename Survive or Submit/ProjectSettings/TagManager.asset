@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Bullet
   - Enemy
+  - Ground
+  - Water
+  - Collectable
+  - Crafting
+  - Zone
   layers:
   - Default
   - TransparentFX
@@ -13,10 +18,10 @@ TagManager:
   - Background
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Obstacle
+  - Ground
+  - Safehouse
+  - Projectile
   - 
   - 
   - 

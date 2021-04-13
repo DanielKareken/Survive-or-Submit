@@ -1,8 +1,9 @@
--array of tiles (storing location)
--set a SPECIFIC number of obstacles to be spawned
--on spawning new object, check if it overlaps another collider, if so, delete
--consider using chunks to prevent loading everything at one time
 
+still need to solve:
+- shooting bugged, wont fire sometimes
+- how to implement multiple weapon types as game objects?
+- clickable UI images for crafting
+- chunk loading (to avoid tryin to load everything at once)
 
 useful links:
 https://www.youtube.com/c/SebastianLague/playlists

@@ -1,0 +1,1023 @@
+fileFormatVersion: 2
+guid: 60a8347360b1cb7478467c6e7354b099
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2139608624850381602
+    second: dungeonex_0
+  - first:
+      213: -7546561282238507304
+    second: dungeonex_1
+  - first:
+      213: 7980626217225359712
+    second: dungeonex_2
+  - first:
+      213: 1725099520151943818
+    second: dungeonex_3
+  - first:
+      213: -2817704423903739152
+    second: dungeonex_4
+  - first:
+      213: -5924801714259661052
+    second: dungeonex_5
+  - first:
+      213: -4613074880804509508
+    second: dungeonex_6
+  - first:
+      213: -9014257328056962550
+    second: dungeonex_7
+  - first:
+      213: -6450046800440941924
+    second: dungeonex_8
+  - first:
+      213: -211204715959477413
+    second: dungeonex_9
+  - first:
+      213: -8369445662810406603
+    second: dungeonex_10
+  - first:
+      213: -5766236792532025124
+    second: dungeonex_11
+  - first:
+      213: -8862476422368526393
+    second: dungeonex_12
+  - first:
+      213: -1719549390411239500
+    second: dungeonex_13
+  - first:
+      213: -5206436413770274056
+    second: dungeonex_14
+  - first:
+      213: -6069801728292091896
+    second: dungeonex_15
+  - first:
+      213: 1293750964145806279
+    second: dungeonex_16
+  - first:
+      213: -3014524976357166493
+    second: dungeonex_17
+  - first:
+      213: -2513682050786277513
+    second: dungeonex_18
+  - first:
+      213: -196349696607800158
+    second: dungeonex_19
+  - first:
+      213: 8292951833692820530
+    second: dungeonex_20
+  - first:
+      213: 8844146886055079559
+    second: dungeonex_21
+  - first:
+      213: 6076580998910776653
+    second: dungeonex_22
+  - first:
+      213: 7842195087359644521
+    second: dungeonex_23
+  - first:
+      213: -9042688974149624200
+    second: dungeonex_24
+  - first:
+      213: -6786497015483283346
+    second: dungeonex_25
+  - first:
+      213: -5221567262413095809
+    second: dungeonex_26
+  - first:
+      213: -1446033427300930436
+    second: dungeonex_27
+  - first:
+      213: 8248461719774081822
+    second: dungeonex_28
+  - first:
+      213: -5062022621097986914
+    second: dungeonex_29
+  - first:
+      213: 1274217554903341960
+    second: dungeonex_30
+  - first:
+      213: 8730973315894704175
+    second: dungeonex_31
+  - first:
+      213: 3190720495874237735
+    second: dungeonex_32
+  - first:
+      213: 8545686872378088629
+    second: dungeonex_33
+  - first:
+      213: 3818477399185104355
+    second: dungeonex_34
+  - first:
+      213: 7553155545056515493
+    second: dungeonex_35
+  - first:
+      213: 8205994176390033522
+    second: dungeonex_36
+  - first:
+      213: 8636393940756121867
+    second: dungeonex_37
+  - first:
+      213: -7210371535685949516
+    second: dungeonex_38
+  - first:
+      213: 1715406516744008550
+    second: dungeonex_39
+  - first:
+      213: -5513667862123882618
+    second: dungeonex_40
+  - first:
+      213: 4723338453688372838
+    second: dungeonex_41
+  - first:
+      213: -6033969810955772882
+    second: dungeonex_42
+  - first:
+      213: -2825884136161926816
+    second: dungeonex_43
+  - first:
+      213: 6583375890439149564
+    second: dungeonex_44
+  - first:
+      213: -8758882061844987556
+    second: dungeonex_45
+  - first:
+      213: -6838718294891622877
+    second: dungeonex_46
+  - first:
+      213: -3504093195743264882
+    second: dungeonex_47
+  - first:
+      213: -2645389233287093795
+    second: dungeonex_48
+  - first:
+      213: 7909823337789990489
+    second: dungeonex_49
+  - first:
+      213: -3150024496936904035
+    second: dungeonex_50
+  - first:
+      213: 1343543056964886693
+    second: dungeonex_51
+  - first:
+      213: -2541748470206707199
+    second: dungeonex_52
+  - first:
+      213: -1132120225831785957
+    second: dungeonex_53
+  - first:
+      213: -1531037660022944709
+    second: dungeonex_54
+  - first:
+      213: 4940403661758590724
+    second: dungeonex_55
+  - first:
+      213: -7814244532910490373
+    second: dungeonex_56
+  - first:
+      213: 3533615341521486944
+    second: dungeonex_57
+  - first:
+      213: -8250121377192912314
+    second: dungeonex_58
+  - first:
+      213: 8554670575527332935
+    second: dungeonex_59
+  - first:
+      213: -4434577703925162947
+    second: dungeonex_60
+  - first:
+      213: -7910925151847966579
+    second: dungeonex_61
+  - first:
+      213: -2982552899844091054
+    second: dungeonex_62
+  - first:
+      213: 8438845316155292950
+    second: dungeonex_63
+  - first:
+      213: 5217181777163541080
+    second: dungeonex_64
+  - first:
+      213: 5206954506133094940
+    second: dungeonex_65
+  - first:
+      213: 42555894891057893
+    second: dungeonex_66
+  - first:
+      213: 3761460610600673100
+    second: dungeonex_67
+  - first:
+      213: 1874272810977910819
+    second: dungeonex_68
+  - first:
+      213: -7294710845750859350
+    second: dungeonex_69
+  - first:
+      213: 2822194461295945962
+    second: dungeonex_70
+  - first:
+      213: 4607986488314158158
+    second: dungeonex_71
+  - first:
+      213: 58118210041160234
+    second: dungeonex_72
+  - first:
+      213: 4704765617869148417
+    second: dungeonex_73
+  - first:
+      213: 7703768516530000288
+    second: dungeonex_74
+  - first:
+      213: -6476345929822003903
+    second: dungeonex_75
+  - first:
+      213: 5081236359204326973
+    second: dungeonex_76
+  - first:
+      213: 2510723173477861065
+    second: dungeonex_77
+  - first:
+      213: 8568592122541008865
+    second: dungeonex_78
+  - first:
+      213: -57593307255042026
+    second: dungeonex_79
+  - first:
+      213: 1860015984714935485
+    second: dungeonex_80
+  - first:
+      213: -5741393225240465043
+    second: dungeonex_81
+  - first:
+      213: 9095546499907535824
+    second: dungeonex_82
+  - first:
+      213: -1948830397828695496
+    second: dungeonex_83
+  - first:
+      213: 877576702360339196
+    second: dungeonex_84
+  - first:
+      213: 639494583651495177
+    second: dungeonex_85
+  - first:
+      213: 9022019270793214235
+    second: dungeonex_86
+  - first:
+      213: 7005668551427269962
+    second: dungeonex_87
+  - first:
+      213: 7188801716332355838
+    second: dungeonex_88
+  - first:
+      213: -1590863936362725386
+    second: dungeonex_89
+  - first:
+      213: -2128482745782506899
+    second: dungeonex_90
+  - first:
+      213: -3331660271495394414
+    second: dungeonex_91
+  - first:
+      213: 3009132521771140307
+    second: dungeonex_92
+  - first:
+      213: -1571552662228549204
+    second: dungeonex_93
+  - first:
+      213: -8462233858642114512
+    second: dungeonex_94
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dungeonex_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 293
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed45e65ba459e42e0800000000000000
+      internalID: -2139608624850381602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_1
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 288
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d615784f7a354790800000000000000
+      internalID: -7546561282238507304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 289
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06113eae241e0ce60800000000000000
+      internalID: 7980626217225359712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_3
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 256
+        width: 24
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8a7ad4afd8c0f710800000000000000
+      internalID: 1725099520151943818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 290
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f2cb2b51c085e8d0800000000000000
+      internalID: -2817704423903739152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_5
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 256
+        width: 25
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40f6de85b30e6cda0800000000000000
+      internalID: -5924801714259661052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_6
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 256
+        width: 80
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb8ae5746d01bffb0800000000000000
+      internalID: -4613074880804509508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_7
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 224
+        width: 29
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a02f33f38bce6e280800000000000000
+      internalID: -9014257328056962550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_8
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 261
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92a21bdb94dc76a0800000000000000
+      internalID: -6450046800440941924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_9
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 270
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5b195a0e66a11df0800000000000000
+      internalID: -211204715959477413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_10
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 256
+        width: 31
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531804d4381c9db80800000000000000
+      internalID: -8369445662810406603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 258
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd0475220363affa0800000000000000
+      internalID: -5766236792532025124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 258
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cff27636a8220580800000000000000
+      internalID: -8862476422368526393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_13
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 192
+        width: 71
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bf6cc2a0fee228e0800000000000000
+      internalID: -1719549390411239500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_14
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 244
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fa6093aaa50fb7b0800000000000000
+      internalID: -5206436413770274056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_15
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 160
+        width: 48
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8080910cc7bb3cba0800000000000000
+      internalID: -6069801728292091896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_16
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 160
+        width: 48
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cbdab5b5a354f110800000000000000
+      internalID: 1293750964145806279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_17
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 199
+        width: 30
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36230b171814a26d0800000000000000
+      internalID: -3014524976357166493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_18
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 128
+        width: 71
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 777cb9c2e7b9d1dd0800000000000000
+      internalID: -2513682050786277513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_19
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 163
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a4bfe1cdfc664df0800000000000000
+      internalID: -196349696607800158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_20
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 160
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2345faa31cb761370800000000000000
+      internalID: 8292951833692820530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_21
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 160
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78ea0bc0cb8bcba70800000000000000
+      internalID: 8844146886055079559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_22
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 161
+        width: 32
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4517f0393a545450800000000000000
+      internalID: 6076580998910776653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_23
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 64
+        width: 52
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9639269d1e215dc60800000000000000
+      internalID: 7842195087359644521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_24
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 64
+        width: 52
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87e5879c94ae18280800000000000000
+      internalID: -9042688974149624200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_25
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 44
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e68cedabbe481d1a0800000000000000
+      internalID: -6786497015483283346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_26
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 128
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7cfe096d344987b0800000000000000
+      internalID: -5221567262413095809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_27
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 64
+        width: 74
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7c23606248aeebe0800000000000000
+      internalID: -1446033427300930436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 32
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e13ba8e5b3c687270800000000000000
+      internalID: 8248461719774081822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonex_29
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 170
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e947670fe3510c9b0800000000000000
+      internalID: -5062022621097986914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

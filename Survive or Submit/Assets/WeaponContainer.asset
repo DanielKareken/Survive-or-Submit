@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba65d555b90a4346896aee5059d8da8, type: 3}
+  m_Name: WeaponContainer
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 8949845452766503765, guid: f25b1896bdf07754fa1323b4ca841d5c, type: 3}
+  - {fileID: 836536660476934675, guid: af698a5a61080c342aecd64f1b323d1d, type: 3}
+  - {fileID: 8720356143178726358, guid: 3c66ada51d95ee54f9d0c4f13402eb30, type: 3}
+  - {fileID: 5623751340278817383, guid: 5e499ce1900f82c4fa8f55c67597c529, type: 3}
+  - {fileID: 8883104076844070531, guid: da5afe3a5699e1946aadfe0c6a5e2ea3, type: 3}
+  - {fileID: 921413060123244303, guid: 803ebd72c8946824489ccebfb69edcae, type: 3}
+  - {fileID: 8887900852450955937, guid: 664c5f0749490b646b2d74f5c23ec8a5, type: 3}
+  - {fileID: 4299065375504727803, guid: 882f11973c2665b4c91ec0aea6f89470, type: 3}
+  - {fileID: 3942245098001991688, guid: 074f0f675f0912443ba60ea3df9b54b1, type: 3}

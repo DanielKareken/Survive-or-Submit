@@ -5,9 +5,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     //public GameObject hitEffect;
-    public float damage;
 
-    private float lifetimeTimer;
+    float lifetimeTimer;
+    float damage;
 
     private void Start()
     {
@@ -26,9 +26,14 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    public void setDamage(int dmg)
+    {
+        damage = dmg;
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player")) {
+        if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Water")) {
             //GameObject effect = Instanstiate(hitEffect, transform.position, Quaternion, identity);
 
             //tell enemy to take damage based on what type of ammunition hits it
