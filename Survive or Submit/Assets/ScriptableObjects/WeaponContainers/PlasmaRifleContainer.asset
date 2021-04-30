@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba65d555b90a4346896aee5059d8da8, type: 3}
+  m_Name: PlasmaRifleContainer
+  m_EditorClassIdentifier: 
+  weaponSideView: {fileID: 21300000, guid: ede11ca946013e84b8c0c2d69e07406f, type: 3}
+  ammoImage: {fileID: 21300000, guid: e2a36a1b4564fc144b1d8573f4b5b7ed, type: 3}
+  nickname: Lightbringer
+  special: Fires a continuous beam of light and doesn't require ammo
+  description: Uses high intensity light to melt your enemies. Careful that your
+    weapon doesn't overheat.
+  cost: 9999999
+  weaponName: Plasma Rifle

@@ -11,6 +11,10 @@ TagManager:
   - Collectable
   - Crafting
   - Zone
+  - SafeZone
+  - PlayerAttackHitbox
+  - EnemyProjectile
+  - AOEAttack
   layers:
   - Default
   - TransparentFX
@@ -20,11 +24,11 @@ TagManager:
   - UI
   - Obstacle
   - Ground
-  - Safehouse
+  - SafeZone
   - Projectile
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - Hitbox
   - 
   - 
   - 

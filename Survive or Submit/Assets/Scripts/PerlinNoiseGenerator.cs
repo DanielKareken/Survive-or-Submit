@@ -40,31 +40,36 @@ public class PerlinNoiseGenerator : MonoBehaviour
                 var perlin = Mathf.PerlinNoise(i / 10, j / 10);
                 int x = (int)i;
                 int y = (int)j;
+                x = -x + xOrg;
+                y = -y + yOrg;
 
                 if (perlin < .1f)
                 {
-                    //water tile
-                    waterMap.SetTile(new Vector3Int(-x + mapWidth / 2, -y + mapHeight / 2, 0), waterTile[0]);
+                    if(x > -40 && x < 40 && y > -40 && y < 40)
+                    {
+                        groundMap.SetTile(new Vector3Int(x, y, 0), groundTile[0]); //ground tile
+                    }
+                    else
+                    {                        
+                        waterMap.SetTile(new Vector3Int(x, y, 0), waterTile[0]); //water tile
+                    }
+                    
                 }
                 else if (perlin <.55f)
-                {
-                    //ground tile
-                    groundMap.SetTile(new Vector3Int(-x + mapWidth / 2, -y + mapHeight / 2, 0), groundTile[0]);
+                {                    
+                    groundMap.SetTile(new Vector3Int(x, y, 0), groundTile[0]); //ground tile
                 }
                 else if (perlin < .65f)
-                {
-                    //fill tile standard
-                    groundMap.SetTile(new Vector3Int(-x + mapWidth / 2, -y + mapHeight / 2, 0), fillTile[0]);
+                {                    
+                    groundMap.SetTile(new Vector3Int(x, y, 0), fillTile[0]); //fill tile standard
                 }
                 else if (perlin < .75f)
-                {
-                    //fill tile special
-                    groundMap.SetTile(new Vector3Int(-x + mapWidth / 2, -y + mapHeight / 2, 0), fillTile[Random.Range(0,4)]);
+                {                    
+                    groundMap.SetTile(new Vector3Int(x, y, 0), fillTile[Random.Range(0,4)]); //fill tile special
                 }
                 else
-                {
-                    //architecture
-                    groundMap.SetTile(new Vector3Int(-x + mapWidth / 2, -y + mapHeight / 2, 0), fillTile[0]);
+                {                    
+                    groundMap.SetTile(new Vector3Int(x, y, 0), fillTile[0]); //architecture
                 }
             }
         }

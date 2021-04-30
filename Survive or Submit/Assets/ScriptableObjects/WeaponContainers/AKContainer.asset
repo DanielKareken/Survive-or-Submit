@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba65d555b90a4346896aee5059d8da8, type: 3}
+  m_Name: AKContainer
+  m_EditorClassIdentifier: 
+  weaponSideView: {fileID: 21300000, guid: 7b41d15de34ac844aac87403431cd092, type: 3}
+  ammoImage: {fileID: 21300000, guid: 1f994ead1db77c241924d22238a8f286, type: 3}
+  nickname: Russian Ingenuity
+  special: None
+  description: The most iconic assualt rifle, the AK is cheap to make and provides
+    reliable damage at the cost of a slower fire rate.
+  cost: 350
+  weaponName: Assualt Rifle

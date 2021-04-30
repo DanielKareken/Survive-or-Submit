@@ -5,9 +5,5 @@ using UnityEngine;
 public class ZoneHandler : MonoBehaviour
 {
     public int zone;
-    
-    public int getZone()
-    {
-        return zone;
-    }
+
 }
