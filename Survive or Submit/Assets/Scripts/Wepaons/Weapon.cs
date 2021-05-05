@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +13,8 @@ public enum WeaponFireType
 public class Weapon : MonoBehaviour
 {
     [SerializeField] RuntimeData runtimeData;
-    [SerializeField] AudioSource attackSound;
-    [SerializeField] AudioSource reloadSound;
-
+    public AudioSource attackSound;
+    public AudioSource reloadSound;
     public Animator anim;
     public WeaponFireType fireType;
     public GameObject bulletPrefab;
@@ -33,6 +33,7 @@ public class Weapon : MonoBehaviour
 
     protected int currMag; //current ammo in weapon magazine
     protected float nextTimeToFire; //time until next shot fired for automatic weapons
+    protected bool reloading;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,7 @@ public class Weapon : MonoBehaviour
         currMag = magSize;
         reserveAmmo = currMag;
         nextTimeToFire = 0f;
+        reloading = false;
 
         anim = GetComponent<Animator>();
 
@@ -110,7 +112,17 @@ public class Weapon : MonoBehaviour
         {
             //start reload
             GameEvents.InvokeReloadWeapon(reloadSpeed);
-            reloadSound.Play();
+
+            if(!reloading)
+            {
+                reloadSound.Play();
+                reloading = true;
+            }
+            else
+            {
+                reloadSound.Stop();
+                reloading = false;
+            }
         }
     }
 
@@ -151,5 +163,10 @@ public class Weapon : MonoBehaviour
     public RuntimeData getRuntimeData()
     {
         return runtimeData;
+    }
+
+    public void OnWeaponReloaded(object sender, EventArgs args)
+    {
+        reloading = false;
     }
 }

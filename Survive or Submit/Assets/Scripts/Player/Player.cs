@@ -1,13 +1,11 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] RuntimeData runtimeData;
-    [SerializeField] GameObject[] Weapons;
+    [SerializeField] GameObject[] weapons;
     [SerializeField] MedKitContainer medKitType;
     [SerializeField] GameObject vCamBounds;
     
@@ -25,8 +23,9 @@ public class Player : MonoBehaviour
     Vector2 movement;
     Vector2 mousePos;
     float currMoveSpeed;
-    bool allowActions;
-    bool damagedRecently;
+    bool allowActions; //checks whether player can perform actions
+    bool allowMovement; //checks whether player can move and aim
+    bool reloading;
     float damageImmunityTimer;
     int health;
     int healAmount;
@@ -40,20 +39,23 @@ public class Player : MonoBehaviour
     void Start()
     {
         //initialize weapons
-        int totalWeapons = Weapons.Length;
-        foreach (GameObject wp in Weapons)
+        int totalWeapons = weapons.Length;
+        foreach (GameObject wp in weapons)
         {
             wp.SetActive(false);
         }
 
-        Weapons[0].SetActive(true);
+        weapons[0].SetActive(true);
 
         //init private variables
         allowActions = true;
+        allowMovement = true;
         dead = false;
         inCraftingArea = false;
         crafting = false;
+        reloading = false;
         currWeaponIndex = 0;
+        currWeapon = weapons[currWeaponIndex].GetComponent<Weapon>();
         health = maxHealth;
         healOnCD = false;
         currMoveSpeed = baseMoveSpeed;
@@ -71,6 +73,7 @@ public class Player : MonoBehaviour
         GameEvents.UpdateWeapon += OnWeaponSelected;
         GameEvents.WeaponReloaded += OnWeaponReloaded;
         GameEvents.HealEnded += OnHealReady;
+        GameEvents.QuickMeleeFinished += OnQuickMeleeFinished;
         GameEvents.EndGame += OnGameOver;
     }
 
@@ -82,6 +85,7 @@ public class Player : MonoBehaviour
         {                        
             Heal();
             Reload();
+            QuickMelee();
         }
         //player interacts
         Safehouse();
@@ -91,7 +95,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (allowActions && !dead)
+        if (allowMovement && !dead)
         { 
             Movement();
             Aim();
@@ -133,6 +137,15 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             currWeapon.CallReload();
+
+            if(reloading)
+            {
+                reloading = false;
+            }
+            else
+            {
+                reloading = true;
+            }
         }
     }
 
@@ -151,12 +164,30 @@ public class Player : MonoBehaviour
                     health += medKitType.healAmount;
                 }
 
-                GameEvents.InvokeUpdateHealthUI(health);
-                GameEvents.InvokeActivateHeal(medKitType.healCooldown);
-                healOnCD = true;
                 runtimeData.player_meds--;
+                healOnCD = true;
+                GameEvents.InvokeUpdateHealthUI(health);
+                GameEvents.InvokeActivateHeal(medKitType.healCooldown);   
             }
         }       
+    }
+
+    //player can use melee weapon with quick bind
+    void QuickMelee()
+    {
+        if (currWeaponIndex != 0 && Input.GetKeyDown(KeyCode.F))
+        {
+            weapons[currWeaponIndex].SetActive(false);
+            weapons[0].SetActive(true);
+            weapons[0].GetComponent<Axe>().QuickMelee();
+            allowActions = false;
+
+            if (reloading) //quick melee cancels reload
+            {
+                currWeapon.CallReload();
+                reloading = false;
+            }
+        }
     }
 
     //safehouse interactions
@@ -170,6 +201,7 @@ public class Player : MonoBehaviour
                 //bring up crafting and halt player actions
                 GameEvents.InvokeCraftingDisplay();
                 allowActions = false;
+                allowMovement = false;
                 Cursor.visible = true;
                 crosshair.SetActive(false);
                 crafting = true;
@@ -180,6 +212,7 @@ public class Player : MonoBehaviour
                 //hide crafting and allow player actions again
                 GameEvents.InvokeCraftingHide();
                 allowActions = true;
+                allowMovement = true;
                 Cursor.visible = false;
                 crosshair.SetActive(true);
                 crafting = false;
@@ -293,29 +326,24 @@ public class Player : MonoBehaviour
         }
     }   
 
-    void RestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
     void OnAmmoCrafted(object sender, AmmoEventArgs args)
     {
         int amount = args.amount;
 
         //update weapon ammo
-        Weapons[currWeaponIndex].GetComponent<Weapon>().addAmmo(args.amount);
+        currWeapon.addAmmo(args.amount);
     }
 
     //change player weapon to slected weapon and store previous weapon
     void OnWeaponSelected(object sender, WeaponEventArgs args)
     {
-        Weapons[currWeaponIndex].SetActive(false);
+        weapons[currWeaponIndex].SetActive(false);
         currWeaponIndex = args.index;
-        Weapons[currWeaponIndex].SetActive(true);
-        currWeapon = Weapons[currWeaponIndex].GetComponent<Weapon>();
+        weapons[currWeaponIndex].SetActive(true);
+        currWeapon = weapons[currWeaponIndex].GetComponent<Weapon>();
 
         //pass on the weapon to update WeaponUI
-        GameEvents.InvokeUpdateWeaponUI(Weapons[currWeaponIndex], currWeaponIndex);
+        GameEvents.InvokeUpdateWeaponUI(weapons[currWeaponIndex], currWeaponIndex);
     }
 
     //handles decreasing player health
@@ -339,17 +367,24 @@ public class Player : MonoBehaviour
         dead = true;
         sprite.SetActive(false);
         hitbox.enabled = false;
-        Invoke("RestartGame", 2f);
     }
 
     void OnWeaponReloaded(object sender, EventArgs args)
     {
-        Weapons[currWeaponIndex].GetComponent<Weapon>().Reload();
+        weapons[currWeaponIndex].GetComponent<Weapon>().Reload();
+        reloading = false;
     }
 
     void OnHealReady(object sender, EventArgs args)
     {
         healOnCD = false;
+    }
+
+    void OnQuickMeleeFinished(object sender, EventArgs args)
+    {
+        weapons[0].SetActive(false);
+        weapons[currWeaponIndex].SetActive(true);
+        allowActions = true;
     }
 
     void OnGameOver(object sender, GameOverEventArgs args)

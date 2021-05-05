@@ -18,5 +18,5 @@ MonoBehaviour:
   special: None
   description: The most iconic assualt rifle, the AK is cheap to make and provides
     reliable damage at the cost of a slower fire rate.
-  cost: 350
+  cost: 250
   weaponName: Assualt Rifle

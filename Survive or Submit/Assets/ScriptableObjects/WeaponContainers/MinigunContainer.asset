@@ -18,5 +18,5 @@ MonoBehaviour:
   special: Fire rate increases over continous fire, but requires wind up
   description: Whether your enemy is tanky or too numerous, the minigun will tear
     through them like a hot knife through butter. Just remember to time your reloads.
-  cost: 700
+  cost: 400
   weaponName: Minigun

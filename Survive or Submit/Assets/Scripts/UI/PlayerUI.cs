@@ -20,6 +20,7 @@ public class PlayerUI : MonoBehaviour
     void Start()
     {
         bar = healthBar.GetComponent<HealthBar>();
+        bar.SetMaxHealth(runtimeData.player_max_health);
         reloading = false;
 
         //game events
@@ -39,7 +40,7 @@ public class PlayerUI : MonoBehaviour
 
     void OnHealthUpdated(object sender, HealthEventArgs args)
     {
-        bar.SetHealth(args.playerHealth);
+        bar.SetHealth(args.playerHealth);  
     }
 
     void OnCraftingDisplay(object sender, EventArgs args)

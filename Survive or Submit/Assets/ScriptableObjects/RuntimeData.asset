@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea74ab91fc6665448bf52f16d0a308e6, type: 3}
   m_Name: RuntimeData
   m_EditorClassIdentifier: 
-  player_scrap: 7379
-  player_meds: 0
+  player_scrap: 345
+  player_meds: 1
+  player_level: 1
+  player_experience: 0
+  player_max_health: 200
   playerInSpawn: 0
-  allowWeaponFire: 0
-  currZone: 6
+  allowWeaponFire: 1
+  currZone: 1
   mapWidth: 1200
   mapHeight: 1200
   gameOver: 0

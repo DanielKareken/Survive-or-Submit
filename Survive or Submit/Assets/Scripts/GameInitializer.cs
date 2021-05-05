@@ -20,6 +20,8 @@ public class GameInitializer : MonoBehaviour
         runtimeData.player_scrap = startingScrap;
         runtimeData.player_meds = startingMeds;
         runtimeData.playerInSpawn = true;
+        runtimeData.player_level = 1;
+        runtimeData.player_experience = 0;
         runtimeData.currZone = 1;
         runtimeData.gameOver = false;
 

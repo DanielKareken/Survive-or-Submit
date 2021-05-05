@@ -10,6 +10,7 @@ public class Axe : Weapon
     public float attackRadius;
 
     bool isAttacking;
+    bool quickMelee;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class Axe : Weapon
         reserveAmmo = currMag;
         nextTimeToFire = 0f;
         isAttacking = false;
-        //.SetActive(false);
+        quickMelee = false;
 
         anim = GetComponent<Animator>();
     }
@@ -46,17 +47,33 @@ public class Axe : Weapon
         {
             nextTimeToFire -= Time.deltaTime;
         }
+        else
+        {
+            if (quickMelee)
+            {
+                quickMelee = false;
+                GameEvents.InvokeQucikMeleeFinished();
+            }
+        }
     }
 
     //handles melee weapon attack
     public new void Shoot()
     {
-        if (Input.GetMouseButton(0) && Time.deltaTime > nextTimeToFire)
+        if (Input.GetMouseButton(0) && Time.deltaTime > nextTimeToFire && !quickMelee)
         {
-            //animate + sfx
+            attackSound.Play();
             anim.SetTrigger("Attack");
             nextTimeToFire = Time.deltaTime + 1f / fireRate;
         }
+    }
+
+    public void QuickMelee()
+    {
+        attackSound.Play();
+        anim.SetTrigger("Attack");
+        nextTimeToFire = Time.deltaTime + 1f / fireRate;
+        quickMelee = true;
     }
 
     private void OnDrawGizmosSelected()
@@ -79,12 +96,10 @@ public class Axe : Weapon
             }
 
             isAttacking = false;
-            //meleeHitbox.SetActive(false);
         }
         else
         {
             isAttacking = true;
-            //meleeHitbox.SetActive(true);
         }
     }
 }

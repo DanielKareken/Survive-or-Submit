@@ -41,6 +41,7 @@ public class CanvasController : MonoBehaviour
 
     void OnGameOver(object sender, GameOverEventArgs args)
     {
+        Cursor.visible = true;
         gameOverUI.SetActive(true);
         gameOverUI.GetComponent<GameOverUI>().setCond(args.cond);
 

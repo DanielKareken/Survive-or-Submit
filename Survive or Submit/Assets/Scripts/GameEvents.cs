@@ -51,7 +51,7 @@ public static class GameEvents
     public static event EventHandler<ZoneEventArgs> UpdateZoneUI;
     public static event EventHandler<ReloadEventArgs> ReloadWeapon;
     public static event EventHandler WeaponReloaded;
-    
+    public static event EventHandler QuickMeleeFinished;
 
     //functions
 
@@ -129,5 +129,11 @@ public static class GameEvents
     public static void InvokeWeaponRealoaded()
     {
         WeaponReloaded(null, EventArgs.Empty);
+    }
+
+    //hide the reload UI
+    public static void InvokeQucikMeleeFinished()
+    {
+        QuickMeleeFinished(null, EventArgs.Empty);
     }
 }
