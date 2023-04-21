@@ -61,10 +61,10 @@ public class WeaponUI : MonoBehaviour
     {
         //print("Recieved signal from player for weapon: " + args.weapon + ". Updating UI...");
         ammoImg.GetComponent<Image>().sprite = weaponContainer[args.index].ammoImage;
-        updateWeaponUI(args.weapon);
+        UpdateWeaponUI(args.weapon);
     }
 
-    public void updateWeaponUI(GameObject weapon)
+    void UpdateWeaponUI(GameObject weapon)
     {
         Weapon w = weapon.GetComponent<Weapon>();
         curr = w.getCurrAmmo();

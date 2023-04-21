@@ -32,38 +32,9 @@ public class Ranger : Enemy
     // Update is called once per frame
     void Update()
     {
-        //check if health falls to ZERO
-        if (health <= 0 && !dead)
-        {
-            dead = true;
-            sprite.SetActive(false);
-            hitbox.enabled = false;
-            GameObject scrap = Instantiate(scrapPrefab, gameObject.transform.position, gameObject.transform.rotation);
-            ScrapCollectable collectable = scrap.GetComponent<ScrapCollectable>();
-            dieSound.Play();
-            Invoke("Die", dieSound.time);
-        }
+        MakeIdleSound();
 
-        //idle noise timer
-        if (timeToNextMoan <= 0)
-        {
-            idleSound.Play();
-        }
-        else
-        {
-            timeToNextMoan -= Time.deltaTime;
-        }
-
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
-        distanceToTarget = Vector3.Distance(playerPos.position, transform.position);
-
-        if (distanceToTarget <= aggroRange && !attacking)
-        {
-            attacking = true;
-            Attack();
-        }
-
-        //timer
+        //fire rate timer
         if (timeTillNextAttack < fireRate)
         {
             timeTillNextAttack += Time.deltaTime;
@@ -72,8 +43,20 @@ public class Ranger : Enemy
         {
             attacking = false;
         }
+    }
 
+    void FixedUpdate()
+    {
         Aim();
+
+        if (distanceToTarget <= aggroRange && !attacking)
+        {
+            attacking = true;
+            Attack();
+        }
+
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        distanceToTarget = Vector3.Distance(playerPos.position, transform.position);
     }
 
     //look at player

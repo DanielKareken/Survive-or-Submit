@@ -43,35 +43,10 @@ public class Leaper : Enemy
         timeToNextMoan = 0;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        //check if health falls to ZERO
-        if (health <= 0 && !dead)
-        {
-            dead = true;
-            sprite.SetActive(false);
-            hitbox.enabled = false;
-            GameObject scrap = Instantiate(scrapPrefab, gameObject.transform.position, gameObject.transform.rotation);
-            ScrapCollectable collectable = scrap.GetComponent<ScrapCollectable>();
-            collectable.setQuantity(Random.Range(minDrop, maxDrop + 1));
-            dieSound.Play();
-            Invoke("Die", dieSound.time);
-        }
+        MakeIdleSound();
 
-        //idle noise timer
-        if (timeToNextMoan <= 0)
-        {
-            idleSound.Play();
-        }
-        else
-        {
-            timeToNextMoan -= Time.deltaTime;
-        }
-
-        //get player position
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
-        distanceToTarget = Vector3.Distance(playerPos.position, transform.position);
-        
         //states
         if (currentState == State.PATROL)
         {
@@ -84,17 +59,19 @@ public class Leaper : Enemy
         else if (currentState == State.ATTACK)
         {
             DashAttack();
-        }
+        }      
+    }
 
-        if (!attacking)
-        {
-            Aim();
-        }
-        
+    void FixedUpdate()
+    {
+        //get player position
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        distanceToTarget = Vector3.Distance(playerPos.position, transform.position);
     }
 
     void Patrol()
     {
+        anim.SetBool("charging", false);
         aiScript.enabled = true;
         if (distanceToTarget <= aggroRange)
         {
@@ -107,6 +84,7 @@ public class Leaper : Enemy
     void Channel()
     {
         aiScript.enabled = false;
+        anim.SetBool("charging", true);
         //check if in range again (for after first attack)
         if (!attacking && distanceToTarget > aggroRange)
         {
@@ -131,6 +109,7 @@ public class Leaper : Enemy
     //simulates leap attack
     void DashAttack()
     {
+        anim.SetBool("charging", false);
         rb.velocity = transform.up * dashSpeed;
         damage = baseDamage * 2;
         

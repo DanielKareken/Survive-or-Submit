@@ -18,5 +18,5 @@ MonoBehaviour:
   special: Pierces through multiple enemies
   description: The sniper rifle is not the most ideal weapon against hordes of enemies
     until you learn to effectively line them up and knock them down with one shot.
-  cost: 300
+  levelRequired: 7
   weaponName: Sniper

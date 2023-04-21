@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4341906127163607760}
   - component: {fileID: 4341906127163607762}
   - component: {fileID: 4341906127163607761}
-  - component: {fileID: 1562449591517410199}
+  - component: {fileID: 6322750407806131528}
   m_Layer: 9
   m_Name: Sniper Bullet
   m_TagString: Bullet
@@ -65,13 +65,13 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0010969043, y: -0.056808025}
   m_Size: {x: 0.12345731, y: 2.0614405}
   m_Direction: 0
---- !u!114 &1562449591517410199
+--- !u!114 &6322750407806131528
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4341906127163607774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8adeb8c3faa6e8140ae6281dec889a12, type: 3}
+  m_Script: {fileID: 11500000, guid: 87799071d7ba73b4e908daa3de98f6f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 0}

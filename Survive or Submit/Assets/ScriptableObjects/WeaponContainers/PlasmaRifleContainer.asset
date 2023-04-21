@@ -18,5 +18,5 @@ MonoBehaviour:
   special: Fires a continuous beam of light and doesn't require ammo
   description: Uses high intensity light to melt your enemies. Careful that your
     weapon doesn't overheat.
-  cost: 9999999
+  levelRequired: 15
   weaponName: Plasma Rifle

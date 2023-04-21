@@ -8,18 +8,19 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject player;
 
     public GameObject[] enemyPrefabs;
+    public int totalThreshold;
     public float spawnMinDist;
     public float spawnMaxDist;
 
     Vector2 playerPos;
     float spawnTimer; //time in between spawn attempts
-    
     int numToSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
         spawnTimer = 10f;
+        runtimeData.numActiveEnemies = 0;
     }
 
     // Update is called once per frame
@@ -56,9 +57,10 @@ public class EnemySpawner : MonoBehaviour
             spawnOffest.y += Random.Range(0, spawnMaxDist - spawnMinDist);
             spawnPos = new Vector3(spawnPos.x + spawnOffest.x, spawnPos.y + spawnOffest.y, 0);
             Instantiate(enemyPrefabs[Random.Range(0, zombieTypeMax)], spawnPos, transform.rotation);
+            runtimeData.numActiveEnemies++;
         }
 
-        spawnTimer = 10f;
+        spawnTimer = 15f;
     }
     
     //checks what zone the player is in to determine spawn rates and what types, return typesMax
@@ -83,6 +85,19 @@ public class EnemySpawner : MonoBehaviour
             case 5:
                 numToSpawn = 10;
                 break;
+            case 6:
+                numToSpawn = 10;
+                break;
+        }
+
+        //reduce spawn numbers after a certain number of zombies are present
+        if(runtimeData.numActiveEnemies >= 15)
+        {
+            numToSpawn /= 2;
+        }
+        else if (runtimeData.numActiveEnemies >= 30)
+        {
+            numToSpawn = 1;
         }
 
         return zone;

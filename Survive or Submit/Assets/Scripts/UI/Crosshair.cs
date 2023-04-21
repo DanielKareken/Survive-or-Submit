@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Crosshair : MonoBehaviour
 {
+    [SerializeField] RuntimeData runtimeData;
+
     public Camera cam;
     public Player player;
     public Rigidbody2D rb;
@@ -19,15 +21,19 @@ public class Crosshair : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 offset = new Vector2(0.5f, 0);
-        //get location of mouse on screen
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = mousePos;
+        if(!runtimeData.game_paused)
+        {
+            Vector2 offset = new Vector2(0.5f, 0);
+            //get location of mouse on screen
+            mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = mousePos;
 
-        //look at player
-        Vector2 playerPos = player.transform.position;
-        Vector2 lookDir = playerPos - rb.position;
-        float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 270f;
-        rb.rotation = lookAngle;
+            //look at player
+            Vector2 playerPos = player.transform.position;
+            Vector2 lookDir = playerPos - rb.position;
+            float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 270f;
+            rb.rotation = lookAngle;
+        }
+        
     }
 }

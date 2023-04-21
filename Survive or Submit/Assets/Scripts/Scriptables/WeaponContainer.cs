@@ -11,6 +11,6 @@ public class WeaponContainer : ScriptableObject
     public string nickname;
     public string special;
     public string description;
-    public int cost;
+    public int levelRequired;
     public string weaponName;
 }

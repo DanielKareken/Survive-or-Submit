@@ -18,5 +18,5 @@ MonoBehaviour:
   special: Projectiles explode and deal AOE damage on hit
   description: Unknown technology uses element [REDACTED], which seems to be highly
     effective against the undead.
-  cost: 450
+  levelRequired: 12
   weaponName: Raygun

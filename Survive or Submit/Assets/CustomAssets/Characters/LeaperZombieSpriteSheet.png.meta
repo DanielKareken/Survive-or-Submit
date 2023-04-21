@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -6194539710719231093
     second: LeaperZombieSpriteSheet_2
+  - first:
+      213: 7959198529509642521
+    second: LeaperZombieSpriteSheet_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -104,7 +107,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9
-        y: 13
+        y: 69
         width: 24
         height: 25
       alignment: 0
@@ -125,7 +128,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 42
-        y: 13
+        y: 69
         width: 24
         height: 25
       alignment: 0
@@ -146,7 +149,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 72
-        y: 13
+        y: 69
         width: 24
         height: 25
       alignment: 0
@@ -158,6 +161,27 @@ TextureImporter:
       bones: []
       spriteID: b8b778304f2980aa0800000000000000
       internalID: -6194539710719231093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LeaperZombieSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 15
+        width: 34
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911db3894e0c47e60800000000000000
+      internalID: 7959198529509642521
       vertices: []
       indices: 
       edges: []

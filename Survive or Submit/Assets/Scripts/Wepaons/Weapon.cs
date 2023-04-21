@@ -29,11 +29,12 @@ public class Weapon : MonoBehaviour
     public int scrapCostScaler; //scales cost of ammo for this weapon's caliber
     public int accuracy;
     public float reloadSpeed;
+    public float range;
     public int weaponID;
+    public bool reloading;
 
     protected int currMag; //current ammo in weapon magazine
     protected float nextTimeToFire; //time until next shot fired for automatic weapons
-    protected bool reloading;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +53,7 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         //if left mouse clicked, attack
-        if (runtimeData.allowWeaponFire)
+        if (runtimeData.allowWeaponFire && !runtimeData.game_paused)
         {
             if (currMag != 0)
             {
@@ -79,6 +80,7 @@ public class Weapon : MonoBehaviour
                 nextTimeToFire = Time.deltaTime + 1f / fireRate;
                 //animate + sound fx
                 FireBullet();
+                attackSound.Play();
             }
         }
 
@@ -90,6 +92,7 @@ public class Weapon : MonoBehaviour
                 nextTimeToFire = Time.deltaTime + 1f / fireRate;
                 //animate + sound fx
                 FireBullet();
+                attackSound.Play();
             }
         }
     }
@@ -97,21 +100,27 @@ public class Weapon : MonoBehaviour
     //handles actual shooting 
     protected void FireBullet()
     {
+        //make bullet
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        //assign properties
         bullet.GetComponent<Bullet>().setDamage(damagePerShot);
+        bullet.GetComponent<Bullet>().setLifetime(range / bulletForce);
+        //move bullet
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(bulletSpawnPoint.up * bulletForce, ForceMode2D.Impulse);
+        //decrease ammo
         currMag--;
+        //update UI
         GameEvents.InvokeUpdateWeaponUI(gameObject, weaponID);
-        attackSound.Play();
     }
 
-    public void CallReload()
+    //try reload
+    public void CallReload(PlayerUI playerUI)
     {
-        if(currMag != magSize && reserveAmmo > 0)
+        if (currMag != magSize && reserveAmmo > 0)
         {
-            //start reload
-            GameEvents.InvokeReloadWeapon(reloadSpeed);
+            //update in UI
+            playerUI.CallReloadWeaponUI(reloadSpeed);
 
             if(!reloading)
             {
@@ -126,6 +135,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    //reload weapon
     public void Reload()
     {
         //math
@@ -142,6 +152,7 @@ public class Weapon : MonoBehaviour
         }
             
         currMag = toAdd;
+        reloading = false;
         GameEvents.InvokeUpdateWeaponUI(gameObject, weaponID);
     }
 
@@ -163,10 +174,5 @@ public class Weapon : MonoBehaviour
     public RuntimeData getRuntimeData()
     {
         return runtimeData;
-    }
-
-    public void OnWeaponReloaded(object sender, EventArgs args)
-    {
-        reloading = false;
     }
 }

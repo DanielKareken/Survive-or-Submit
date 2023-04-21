@@ -5,26 +5,39 @@ using UnityEngine.UI;
 
 public class CraftingUI : MonoBehaviour
 {
+    [Header("Object Refs")]
     [SerializeField] RuntimeData runtimeData;
     [SerializeField] WeaponContainer[] weaponContainer;
+    [SerializeField] private WeaponHolder _weaponHolder;
+    public GameObject weaponTabButton;
+    public GameObject gearTabButton;
+    public GameObject weaponImage;
 
+    [Header("Weapon Crafting Tab")]
     public GameObject[] weaponSlots;
-    public GameObject[] weaponNames;
+
+    [Header("User Options UI")]
     public GameObject craftButton;
     public GameObject ammoCostText;
     public GameObject medCostText;
     public GameObject multiplierText;
     public GameObject ammoImage;
-    public GameObject weaponImage;
+
+    [Header("Item Stats UI")]
     public GameObject nicknameText;
-    public GameObject damageText;
-    public GameObject fireRateText;
-    public GameObject magCapacityText;
-    public GameObject costPerShotText;
-    public GameObject accuracyText;
-    public GameObject reloadSpeedText;
+    public GameObject damageBar;
+    public GameObject fireRateBar;
+    public GameObject magCapacityBar;
+    public GameObject costPerShotBar;
+    public GameObject accuracyBar;
+    public GameObject reloadSpeedBar;
     public GameObject specialText;
     public GameObject descriptionText;
+
+    [Header("Gear Crafting Tab")]
+    public GameObject[] gearSlots;
+    
+    
     public int medCost;
     public int ammoCost; //does not need to be initialized
 
@@ -32,8 +45,9 @@ public class CraftingUI : MonoBehaviour
     Text mCostText;
     Text aCostText;
     Text multiText;
-    int lastSelectedIndex; //stores index of currently selected weapon
-    int currIndex; //stores index of last clicked button
+    int currEquipedWeaponIndex; //stores index of currently selected weapon
+    int lastSelectedButtonIndex; //stores index of last selected button
+    int currSelectedButtonIndex; //stores index of just clicked button
     int[] multiplier;
     int multiIndex; //points to an element in multiplier   
 
@@ -52,18 +66,22 @@ public class CraftingUI : MonoBehaviour
         aCostText.text = "0";
         mCostText.text = "" + medCost * multiplier[multiIndex];
         isUnlocked = new bool[] { true, false, false, false, false, false, false, false, false};
-        currIndex = 0;
-        lastSelectedIndex = currIndex;
-
-        foreach (GameObject text in weaponNames)
-        {
-            text.GetComponent<Text>().text = "CLASSIFIED";
-        }
-        weaponNames[0].GetComponent<Text>().text = "Axe";
+        currSelectedButtonIndex = 0;
+        currEquipedWeaponIndex = 0;
+        lastSelectedButtonIndex = currSelectedButtonIndex;
 
         //events
         GameEvents.UpdateWeaponUI += OnWeaponUpdated;
         GameEvents.EndGame += OnGameOver;
+
+        //initialize weapons
+        foreach(GameObject weaponSlot in weaponSlots)
+        {
+            weaponSlot.GetComponent<Image>().color = new Color(0.1f, 0.1f, 0.1f, 0.5f); //transparent black
+            weaponSlot.GetComponent<WeaponButton>().SetName("CLASSIFIED");
+        }
+        weaponSlots[0].GetComponent<Image>().color = new Color(0, 1, 0, 0.5f); //transparent green
+        weaponSlots[0].GetComponent<WeaponButton>().SetName(weaponContainer[0].weaponName);
     }
 
     // Update is called once per frame
@@ -84,7 +102,7 @@ public class CraftingUI : MonoBehaviour
     public void CraftAmmo()
     {
         //make sure weapon selected is unlocked
-        if (isUnlocked[currIndex])
+        if (isUnlocked[currEquipedWeaponIndex])
         {
             int costToCraft = computeCost(multiplier[multiIndex], ammoCost);
 
@@ -96,8 +114,8 @@ public class CraftingUI : MonoBehaviour
             else
             {
                 runtimeData.player_scrap -= costToCraft;
-                GameEvents.InvokeCraftAmmo(multiplier[multiIndex]);
-                GameEvents.InvokeUpdateWeapon(currIndex);
+                _weaponHolder.AddAmmo(currEquipedWeaponIndex, multiplier[multiIndex]);
+                //GameEvents.InvokeUpdateWeapon(currEquipedWeaponIndex);
                 GameEvents.InvokeUpdateInventory();
             }
         }
@@ -143,75 +161,64 @@ public class CraftingUI : MonoBehaviour
         mCostText.text = "" + medCost * multiplier[multiIndex];
     }
 
-    //on weapon clicked, equip weapon and update neccessary variables
+    //on weapon clicked, update UI and select it
     public void SelectWeapon(int index)
     {
-        if (currIndex != index)
+        if (currSelectedButtonIndex != index)
         {
+            lastSelectedButtonIndex = currSelectedButtonIndex;
+
             //new weapon select + weapon unlocked
             if (isUnlocked[index])
             {
-                HighlightButton(index); //display weapon is selected in UI to player
-                GameEvents.InvokeUpdateWeapon(index); //will send to Player first to get weapon GameObject, since this class wont have access to it
-
                 //update UI elements
                 UpdateUI(index);
+                weaponSlots[index].GetComponent<Image>().color = new Color(0, 1, 0, 0.5f); //transparent green
+                if (index != currEquipedWeaponIndex)
+                {
+                    weaponSlots[currEquipedWeaponIndex].GetComponent<Image>().color = new Color(0.1f, 0.1f, 0.1f, 0.5f); //transparent black
+                }
+                
+                //GameEvents.InvokeUpdateWeapon(index); //will send to Player first to get weapon GameObject, since this class wont have access to it
+                currEquipedWeaponIndex = index;
             }
             //new weapon selected + weapon locked
             else
             {
-                weaponNames[index].GetComponent<Text>().text = "Cost: " + weaponContainer[index].cost;
-                int max = weaponContainer.Length - 1;
-
-                //update UI elements
-                UpdateUI(max);
-                damageText.GetComponent<Text>().text = "Damage: ???";
-                reloadSpeedText.GetComponent<Text>().text = "Reload Speed: ???";
-                costPerShotText.GetComponent<Text>().text = "Ammo Cost: ???";
-                accuracyText.GetComponent<Text>().text = "Accuracy: ???";
-                magCapacityText.GetComponent<Text>().text = "Mag Size: ???";
-                fireRateText.GetComponent<Text>().text = "Fire rate: ???";
-            }
-
-            if (!isUnlocked[currIndex])
-            {
-                weaponNames[currIndex].GetComponent<Text>().text = "CLASSIFIED";
-            }
-
-            currIndex = index;
-        }
-        else
-        {
-            //same weapon clicked again + weapon locked
-            if (!isUnlocked[index])
-            {
-                //player has enough scrap: unlock weapon
-                if (runtimeData.player_scrap >= weaponContainer[index].cost)
+                //weapon is unlockable
+                if (index <= runtimeData.weapons_unlocked - 1)
                 {
-                    HighlightButton(index); //display weapon is selected in UI to player
-                    runtimeData.player_scrap -= weaponContainer[index].cost;
-                    isUnlocked[index] = true;
+                    //update UI elements
+                    UpdateUI(index);
+                    weaponSlots[index].GetComponent<WeaponButton>().SetName(weaponContainer[index].weaponName); 
+                    weaponSlots[index].GetComponent<Image>().color = new Color(0, 1, 0, 0.5f); //transparent green
+                    weaponSlots[currEquipedWeaponIndex].GetComponent<Image>().color = new Color(0.1f, 0.1f, 0.1f, 0.5f); //transparent black            
 
-                    GameEvents.InvokeUpdateWeapon(index); //will send to Player first to get weapon GameObject, since this class wont have access to it
+                    //GameEvents.InvokeUpdateWeapon(index); //will send to Player first to get weapon GameObject, since this class wont have access to it
                     GameEvents.InvokeUpdateInventory();
-
-                    //print("Sending to weapon at index " + index);
+                    isUnlocked[index] = true;
+                    currEquipedWeaponIndex = index;
+                }
+                //weapon is not unlockable
+                else
+                {
+                    weaponSlots[index].GetComponent<WeaponButton>().SetName("Error: Weapon Not found");
+                    int max = weaponContainer.Length - 1;
 
                     //update UI elements
-                    weaponNames[index].GetComponent<Text>().text = weaponContainer[index].weaponName;
-                    UpdateUI(index);
+                    UpdateUI(max);
+                    //GameEvents.InvokeUpdateWeapon(index); //will send to Player first to get weapon GameObject, since this class wont have access to it
                 }
             }
-        }
-    }
 
-    //display what weapon is currently selected in UI and active for player
-    void HighlightButton(int index)
-    {
-        weaponSlots[index].GetComponent<Image>().color = Color.green;
-        weaponSlots[lastSelectedIndex].GetComponent<Image>().color = Color.black;
-        
-        lastSelectedIndex = index;
+            //if last button was locked, replace name with "CLASSIFIED"
+            if (!isUnlocked[lastSelectedButtonIndex])
+            {
+                weaponSlots[lastSelectedButtonIndex].GetComponent<WeaponButton>().SetName("CLASSIFIED");
+            }
+
+            currSelectedButtonIndex = index;
+        }
     }
 
     //first part of updating UI elements
@@ -230,17 +237,23 @@ public class CraftingUI : MonoBehaviour
         Weapon weapon = args.weapon.GetComponent<Weapon>();
         ammoCost = args.weapon.GetComponent<Weapon>().getAmmoCost();
 
-        damageText.GetComponent<Text>().text = "Damage: " + weapon.damagePerShot;
-        reloadSpeedText.GetComponent<Text>().text = "Reload Speed: " + weapon.reloadSpeed;
-        costPerShotText.GetComponent<Text>().text = "Ammo Cost: " + ammoCost;
-        accuracyText.GetComponent<Text>().text = "Accuracy: " + weapon.accuracy;
-        magCapacityText.GetComponent<Text>().text = "Mag Size: " + weapon.magSize;
-        fireRateText.GetComponent<Text>().text = "Fire rate: " + weapon.fireRate + "/s";        
+        updateItemStatsUI(weapon);          
     }
 
     void OnGameOver(object sender, GameOverEventArgs args)
     {
         GameEvents.UpdateWeaponUI -= OnWeaponUpdated;
         GameEvents.EndGame -= OnGameOver;
+    }
+
+    //update display of stats for item
+    void updateItemStatsUI(Weapon weapon)
+    {
+        damageBar.GetComponent<Slider>().value = weapon.damagePerShot;
+        reloadSpeedBar.GetComponent<Slider>().value = 1 / weapon.reloadSpeed;
+        costPerShotBar.GetComponent<Slider>().value = ammoCost;
+        accuracyBar.GetComponent<Slider>().value = 100 - weapon.accuracy;
+        magCapacityBar.GetComponent<Slider>().value = weapon.magSize;
+        fireRateBar.GetComponent<Slider>().value = weapon.fireRate;   
     }
 }

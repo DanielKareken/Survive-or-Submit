@@ -6,45 +6,53 @@ using UnityEngine.Tilemaps;
 public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] RuntimeData runtimeData;
+    [SerializeField] private GameObject[] _itemCrates;
+    [SerializeField] GameManager gameManager;
     public Tilemap obstacleMap; //obstacle Tilemap
     public TileContainer[] tiles; //obstacles
-    public int spawnLimit;
+    public int tileSpawnLimit;
+    public int itemSpawnLimit;
 
-    Dictionary<Vector2, int> tileDict; //grid position -> int (value does not matter)
+    Dictionary<Vector2, int> objectDict; //grid position -> int (value does not matter)
     Vector2 mapSize;
-    int width;
-    int height;
-    int spawnX;
-    int spawnY;
+    int map_width;
+    int map_height;
+    int spawn_bound_X;
+    int spawn_bound_Y;
     Logger logger;
+    int countSpawned;
 
     // Start is called before the first frame update
     void Start()
     {
-        logger = new Logger(@"C:C:\Users\Daniel Kareken\Desktop\MyLog.log");
+        logger = new Logger(@"C:C:\Users\Daniel Kareken\Desktop\MyLog.log");       
+    }
 
+    public void StartSpawningObstacles()
+    {
         mapSize.x = runtimeData.mapWidth;
         mapSize.y = runtimeData.mapHeight;
-        width = (int)mapSize.x;
-        height = (int)mapSize.y;
-        spawnX = -40; //stores offset for x of safehouse area
-        spawnY = -40; //stores offset for y of safehouse area
-        tileDict = new Dictionary<Vector2, int>();
-        generateObstacles();
+        map_width = (int)mapSize.x;
+        map_height = (int)mapSize.y;
+        spawn_bound_X = -40; //stores offset for x of safehouse area
+        spawn_bound_Y = -40; //stores offset for y of safehouse area
+        objectDict = new Dictionary<Vector2, int>();
+        StartCoroutine(generateObstacles());
         //displaySpawnZone();
     }
 
-    void generateObstacles()
+    IEnumerator generateObstacles()
     {
         bool stillToSpawn;
-        int countSpawned = 0;
+        countSpawned = 0;
+        int spawnType;
 
-        for (int i = 0; i < spawnLimit; i++)
+        for (int i = 0; i < tileSpawnLimit; i++)
         {
             stillToSpawn = true;
             Vector2 spawnPos;
-            TileContainer spawnTile;
             int attempts = 0;
+            spawnType = 0; //Random.Range(0, 1);
 
             //try to spawn obstacle until successful or after certain num of attempts
             while (stillToSpawn && attempts < 5)
@@ -52,42 +60,86 @@ public class ObstacleSpawner : MonoBehaviour
                 attempts++;
                 spawnPos = getRandPos();
                 //logger.WriteLine("Trying to spawn for position: " + spawnPos);
-                spawnTile = tiles[Random.Range(0, tiles.Length)];
 
-                //on successful position found
-                if (isValidSpawnPos(spawnTile, spawnPos))
+                switch (spawnType)
                 {
-                    Vector3Int spawnPos3 = new Vector3Int((int)spawnPos.x, (int)spawnPos.y, 0);
-                    obstacleMap.SetTile(spawnPos3, spawnTile.getTile());
-                    updateTileDict(spawnTile, spawnPos);
-                    stillToSpawn = false;
-                    countSpawned++;
-                }
-                
+                    case 0:
+                        stillToSpawn = SpawnTile(spawnPos);
+                        break;
+                    case 1:
+                        //stillToSpawn = SpawnCrate(spawnPos);
+                        break;
+                    default:
+                        Debug.Log("Error: Invalid case for 'spawnType' recieved");
+                        break;
+                }               
                 //logger.WriteLine("Trying to spawn for object number " + i);
             }
             //logger.WriteLine("Just spawned object number " + i);
+            //Debug.Log("Object succefully spawned at " + spawnPos);
+            if(i % 5 == 0)
+                yield return new WaitForEndOfFrame();
         }
-        logger.WriteLine("Num successfully spawned objects: " + countSpawned);
+        //logger.WriteLine("Num successfully spawned objects: " + countSpawned);
+        gameManager.OnObstacleSpawnerFinished();
+        //End of generateObstacles
     }
+
+    bool SpawnTile(Vector2 spawnPos)
+    {
+        TileContainer spawnTile = tiles[Random.Range(0, tiles.Length)];
+        int tileW = spawnTile.width;
+        int tileH = spawnTile.height;
+        //on successful position found
+
+        if (isValidSpawnPos(tileW, tileH, spawnPos))
+        {
+            //Debug.Log("Spawning obstacle...");
+            Vector3Int spawnPos3 = new Vector3Int((int)spawnPos.x, (int)spawnPos.y, 0);
+            obstacleMap.SetTile(spawnPos3, spawnTile.getTile());
+            updateObjectDict(tileW, tileH, spawnPos);
+            countSpawned++;
+            return false;
+        }
+        else
+            return true;
+    }
+
+    /*
+    bool SpawnCrate(Vector2 spawnPos)
+    {
+        GameObject itemCrateToSpawn = _itemCrates[Random.Range(0, _itemCrates.Length)];
+
+        //on successful position found
+        if (isValidSpawnPos(5, 5, spawnPos))
+        {
+            Debug.Log("Spawning item crate...");
+            Vector3Int spawnPos3 = new Vector3Int((int)spawnPos.x, (int)spawnPos.y, 0);
+            Instantiate(itemCrateToSpawn);
+            itemCrateToSpawn.transform.position = spawnPos3;
+            updateObjectDict(5, 5, spawnPos);
+            countSpawned++;
+            return false;
+        }
+        else
+            return true;
+    }*/
 
     //returns a random 2D position within the width and height given in the class
     Vector2 getRandPos()
     {
-        Vector2 randPos = new Vector2(Random.Range(-width / 2, width / 2), Random.Range(-height / 2, height / 2)); //realigned to place the center of the map to (0,0)
+        Vector2 randPos = new Vector2(Random.Range(-map_width / 2, map_width / 2), Random.Range(-map_height / 2, map_height / 2)); //realigned to place the center of the map to (0,0)
         //print(randPos);
         return randPos;
     }
     
     //determines whether a given position will not overlap antoher object
-    bool isValidSpawnPos(TileContainer tile, Vector2 pos)
+    bool isValidSpawnPos(int width, int height, Vector2 pos)
     {
         bool isValid = true;
-        int tileW = tile.width;
-        int tileH = tile.height;
-        int tileTopLeft = (int)pos.x - (tileW / 2);
-        int tileXOffset = tileTopLeft + tileW;
-        int tileYOffset = tileTopLeft + tileH;
+        int tileTopLeft = (int)pos.x - (width / 2);
+        int tileXOffset = tileTopLeft + width;
+        int tileYOffset = tileTopLeft + height;
 
         //check matrix to see if it overlaps with any other obstacles or the safehouse
         for (int i = tileTopLeft; i < tileXOffset; i++) //x axis
@@ -95,12 +147,14 @@ public class ObstacleSpawner : MonoBehaviour
             for (int j = tileTopLeft; j < tileYOffset; j++) //y axis
             {
                 Vector2 checkPos = new Vector2(i, j);
-                if((checkPos.x >= spawnX && checkPos.x <= spawnX + 80) && (checkPos.y >= spawnY && checkPos.y <= spawnY + 80)) //check bounds of safehouse
+                //check bounds of safehouse
+                if((checkPos.x >= spawn_bound_X && checkPos.x <= spawn_bound_X * -2) && (checkPos.y >= spawn_bound_Y && checkPos.y <= spawn_bound_Y * -2)) 
                 {
-                    isValid = false;
+                    return false;
                 } 
-                else if (tileDict.ContainsKey(checkPos)) {
-                    isValid = false;
+                //check if obstacle already exists there
+                else if (objectDict.ContainsKey(checkPos)) {
+                    return false;
                 }
             }
         }
@@ -109,18 +163,16 @@ public class ObstacleSpawner : MonoBehaviour
     }
 
     //save new obstacle to dictionary at approriate positions
-    void updateTileDict(TileContainer tile, Vector2 pos)
+    void updateObjectDict(int width, int height, Vector2 pos)
     {
-        int tileW = tile.width;
-        int tileH = tile.height;
-        int tileTopLeft = (int)pos.x - (tileW / 2);
+        int tileTopLeft = (int)pos.x - (width / 2);
 
-        for (int i = tileTopLeft; i < tileTopLeft + tileW; i++)
+        for (int i = tileTopLeft; i < tileTopLeft + width; i++)
         {
-            for (int j = tileTopLeft; j < tileTopLeft + tileH; j++)
+            for (int j = tileTopLeft; j < tileTopLeft + height; j++)
             { 
                 Vector2 newPos = new Vector2(i, j);
-                tileDict.Add(newPos, 1);
+                objectDict.Add(newPos, 1);
                 //log.WriteLine("new pos: " + newPos);
             }
         }
@@ -129,9 +181,9 @@ public class ObstacleSpawner : MonoBehaviour
     //for testing area of spawn zone
     void displaySpawnZone()
     {
-        for (int i = spawnX; i < spawnX + 80; i++)
+        for (int i = spawn_bound_X; i < spawn_bound_X + 80; i++)
         {
-            for (int j = spawnY; j < spawnY + 80; j++)
+            for (int j = spawn_bound_Y; j < spawn_bound_Y + 80; j++)
             {
                 obstacleMap.SetTile(new Vector3Int(i, j, 0), tiles[5].getTile());
             }

@@ -4,28 +4,37 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    public SpriteRenderer sprite;
-    public Animator anim;
     public Collider2D hitbox;
     public int aoeDamage;
+    public float aoeRange;
+    public LayerMask targetLayers;
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
         hitbox = GetComponent<Collider2D>();
+
+        //get targets in range
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, aoeRange);
+
+        //damage all hit targets
+        foreach (var collider in hitColliders)
+        {
+            if (collider.gameObject.CompareTag("Enemy"))
+            {
+                damageTarget(collider);
+            }
+        }
     }
 
     public void Deactivate()
     {
         Destroy(gameObject);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    //apply damage to target health
+    void damageTarget(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            collision.gameObject.GetComponent<Enemy>().takeDamage(aoeDamage);
-        }
+        collision.gameObject.GetComponent<Enemy>().takeDamage(aoeDamage);
     }
 }

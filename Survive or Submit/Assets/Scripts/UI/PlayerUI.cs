@@ -2,15 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    [SerializeField] RuntimeData runtimeData;
-    [SerializeField] GameObject healthBar;
-    [SerializeField] GameObject compass;
-    [SerializeField] GameObject currentZone;
-    [SerializeField] GameObject reloadBar;
-
+    public RuntimeData runtimeData;
+    public GameObject healthBar;
+    public GameObject levelBar;
+    public GameObject compass;
+    public GameObject currentZone;
+    public GameObject reloadBar;
+    public GameObject playerLevelText;
+    public GameObject playerLevelBar;
     public Transform playerPos;
 
     HealthBar bar;
@@ -27,7 +30,6 @@ public class PlayerUI : MonoBehaviour
         GameEvents.UpdateHealthUI += OnHealthUpdated;
         GameEvents.DisplayCrafting += OnCraftingDisplay;
         GameEvents.HideCrafting += OnCraftingHide;
-        GameEvents.ReloadWeapon += OnReloadWeapon;
         GameEvents.WeaponReloaded += OnWeaponReloaded;
         GameEvents.EndGame += OnGameOver;
     }
@@ -36,6 +38,7 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         //reloadBar.transform.position = new Vector3(playerPos.position.x, playerPos.position.y + 10, 0);
+        playerLevelText.GetComponent<Text>().text = "Lv " + runtimeData.player_level;
     }
 
     void OnHealthUpdated(object sender, HealthEventArgs args)
@@ -48,6 +51,7 @@ public class PlayerUI : MonoBehaviour
         healthBar.SetActive(false);
         compass.SetActive(false);
         currentZone.SetActive(false);
+        levelBar.SetActive(false);
     }
 
     void OnCraftingHide(object sender, EventArgs args)
@@ -55,28 +59,28 @@ public class PlayerUI : MonoBehaviour
         healthBar.SetActive(true);
         compass.SetActive(true);
         currentZone.SetActive(true);
+        levelBar.SetActive(true);
     }
 
-    void OnReloadWeapon(object sender, ReloadEventArgs args)
+    public void CallReloadWeaponUI(float reloadTime)
     {
         //cancel reload if already reloading
         if (reloading)
         {
-            reloadBar.GetComponent<ReloadUI>().ToggleDisplay();
             reloading = false;
-            runtimeData.allowWeaponFire = true;
+            runtimeData.allowWeaponFire = true;      
         }
         else
         {
-            reloadBar.GetComponent<ReloadUI>().ToggleDisplay();
             reloading = true;
             runtimeData.allowWeaponFire = false;
         }
+
+        reloadBar.GetComponent<ReloadUI>().UpdateReloadWeaponUI(reloadTime);
     }
 
     void OnWeaponReloaded(object sender, EventArgs args)
     {
-        reloadBar.GetComponent<ReloadUI>().ToggleDisplay();
         reloading = false;
         runtimeData.allowWeaponFire = true;
     }

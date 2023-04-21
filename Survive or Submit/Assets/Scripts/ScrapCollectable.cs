@@ -37,6 +37,6 @@ public class ScrapCollectable : MonoBehaviour
     public void OnCollected()
     {
         //play any animations or sounds
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

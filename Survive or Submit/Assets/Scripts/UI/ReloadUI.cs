@@ -23,8 +23,7 @@ public class ReloadUI : MonoBehaviour
         border.SetActive(false);
         reloaded = true;
         showing = false;
-
-        GameEvents.ReloadWeapon += OnReloadWeapon;
+        
         GameEvents.EndGame += OnGameOver;
     }
 
@@ -42,28 +41,22 @@ public class ReloadUI : MonoBehaviour
             else
             {
                 reloaded = true;
+                ToggleDisplay(); //turn off reload UI
                 GameEvents.InvokeWeaponRealoaded();
             }
         }
     }
 
-    public void ToggleDisplay()
+    void ToggleDisplay()
     {
-        if (showing)
-        {
-            fill.SetActive(false);
-            border.SetActive(false);
-            showing = false;
-        }
-        else
-        {
-            fill.SetActive(true);
-            border.SetActive(true);
-            showing = true;
-        }
+        bool isActive = !showing;
+
+        fill.SetActive(isActive);
+        border.SetActive(isActive);
+        showing = isActive;
     }
 
-    void OnReloadWeapon(object sender, ReloadEventArgs args)
+    public void UpdateReloadWeaponUI(float reloadTime)
     {
         if(reloadTimer > 0)
         {
@@ -72,15 +65,16 @@ public class ReloadUI : MonoBehaviour
         }
         else
         {
-            reloadTimer = args.reloadTime;
-            slider.maxValue = args.reloadTime;
+            reloadTimer = reloadTime;
+            slider.maxValue = reloadTime;
             reloaded = false;
         }
+
+        ToggleDisplay();
     }
 
     void OnGameOver(object sender, EventArgs args)
     {
-        GameEvents.ReloadWeapon -= OnReloadWeapon;
         GameEvents.EndGame -= OnGameOver;
     }
 }

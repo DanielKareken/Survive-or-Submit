@@ -17,5 +17,5 @@ MonoBehaviour:
   nickname: Peacekeeper
   special: None
   description: If shooting fast is your question, then the MP5 is your answer.
-  cost: 100
+  levelRequired: 4
   weaponName: SMG

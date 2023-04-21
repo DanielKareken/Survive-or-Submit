@@ -3,11 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoEventArgs : EventArgs
-{ 
-    public int amount;
-}
-
 public class WeaponEventArgs : EventArgs
 {
     public GameObject weapon;
@@ -30,9 +25,17 @@ public class ZoneEventArgs: EventArgs
     public string zone;
 }
 
-public class ReloadEventArgs : EventArgs
+public class LevelUpEventArgs: EventArgs
 {
-    public float reloadTime;
+    public bool isCrate;
+}
+
+public class UpdateLoadingUIArgs: EventArgs
+{
+    public float curValue;
+    public float targetVal;
+    public float curTime;
+    public string message;
 }
 
 public static class GameEvents
@@ -40,8 +43,6 @@ public static class GameEvents
     //UI Events
     public static event EventHandler DisplayCrafting;
     public static event EventHandler HideCrafting;
-    public static event EventHandler<AmmoEventArgs> CraftAmmo;
-    public static event EventHandler<WeaponEventArgs> UpdateWeapon;
     public static event EventHandler<WeaponEventArgs> UpdateWeaponUI;
     public static event EventHandler<HealthEventArgs> UpdateHealthUI;
     public static event EventHandler<HealthEventArgs> ActivateHeal;
@@ -49,12 +50,13 @@ public static class GameEvents
     public static event EventHandler<GameOverEventArgs> EndGame;
     public static event EventHandler UpdateInventory;
     public static event EventHandler<ZoneEventArgs> UpdateZoneUI;
-    public static event EventHandler<ReloadEventArgs> ReloadWeapon;
     public static event EventHandler WeaponReloaded;
     public static event EventHandler QuickMeleeFinished;
+    public static event EventHandler<LevelUpEventArgs> DisplayLevelUpUI;
+    public static event EventHandler PauseGame;
+    public static event EventHandler<UpdateLoadingUIArgs> UpdateLoadingUI;
 
     //functions
-
     //activate/deactivate crafting feature
     public static void InvokeCraftingDisplay()
     {
@@ -63,18 +65,6 @@ public static class GameEvents
     public static void InvokeCraftingHide()
     {
         HideCrafting(null, EventArgs.Empty);
-    }
-
-    //simulate crafting the given input
-    public static void InvokeCraftAmmo(int x)
-    {
-        CraftAmmo(null, new AmmoEventArgs { amount = x });
-    }
-
-    //handles updating WeaponHUD when crafting/swapping weapons
-    public static void InvokeUpdateWeapon(int i)
-    {
-        UpdateWeapon(null, new WeaponEventArgs { index = i });
     }
 
     //handles updating WeaponHUD on firing/reloading
@@ -119,12 +109,6 @@ public static class GameEvents
         UpdateZoneUI(null, new ZoneEventArgs { zone = z });
     }
 
-    //display reload UI and send appropriate reload duration
-    public static void InvokeReloadWeapon(float time)
-    {
-        ReloadWeapon(null, new ReloadEventArgs { reloadTime = time });
-    }
-
     //hide the reload UI
     public static void InvokeWeaponRealoaded()
     {
@@ -135,5 +119,23 @@ public static class GameEvents
     public static void InvokeQucikMeleeFinished()
     {
         QuickMeleeFinished(null, EventArgs.Empty);
+    }
+
+    //display awesome level up on screen
+    public static void InvokeDisplayLevelUpUI(bool crate)
+    {
+        DisplayLevelUpUI(null, new LevelUpEventArgs { isCrate = crate });
+    }
+
+    //pause game
+    public static void InvokePauseGame()
+    {
+        PauseGame(null, EventArgs.Empty);
+    }
+
+    //update loading screen
+    public static void InvokeUpdateLoadingUI(float value, float targetVal, float curTime = -1, string message = "")
+    {
+        UpdateLoadingUI(null, new UpdateLoadingUIArgs { curValue = value, targetVal = targetVal, curTime = curTime, message = message });
     }
 }

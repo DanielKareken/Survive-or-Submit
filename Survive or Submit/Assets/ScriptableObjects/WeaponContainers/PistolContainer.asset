@@ -18,5 +18,5 @@ MonoBehaviour:
   special: None
   description: The trusy Sig P365 may not be the biggest gun, but it is better than
     no gun.
-  cost: 50
+  levelRequired: 1
   weaponName: Pistol

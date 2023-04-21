@@ -104,7 +104,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!70 &6636863535282952905
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -191,23 +191,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed981d36065ec674cbbb94cea93cc1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runtimeData: {fileID: 11400000, guid: 2af82f39af12a564796498c567ec21c1, type: 2}
   sprite: {fileID: 7089805170909865549}
+  cratePrefab: {fileID: 8979165276760484615, guid: fd2b9047e6f208d4e8d1e9b0098b8042,
+    type: 3}
+  crateDropChance: 35
   scrapPrefab: {fileID: 8451886049845248673, guid: 7d55f5ddaba004448a33fa64abf2c068,
     type: 3}
   hitbox: {fileID: 0}
-  idleSound: {fileID: 711877892354408884}
-  hitSound: {fileID: 7513654440640630168}
+  idleSound:
+  - {fileID: 711877892354408884}
+  hitSound:
+  - {fileID: 7513654440640630168}
   dieSound: {fileID: -6260017996280567961}
   health: 150
   baseDamage: 35
   rb: {fileID: 0}
   anim: {fileID: 0}
-  minDrop: 70
-  maxDrop: 80
+  minDrop: 100
+  maxDrop: 150
+  expOnKill: 400
   aggroRange: 10
-  dashSpeed: 40
+  dashSpeed: 60
   startDashTime: 0.5
-  startWindupTime: 2
+  startWindupTime: 1.5
   currentState: 0
 --- !u!95 &5075816521611533231
 Animator:
@@ -239,8 +246,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -334,9 +341,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 69b2a5a5e4292f74c9271a491c7c5826, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -430,9 +437,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: bd8857660a16ba549b8cc522d93d9117, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

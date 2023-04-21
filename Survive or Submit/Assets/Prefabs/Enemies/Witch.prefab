@@ -41,10 +41,10 @@ GameObject:
   - component: {fileID: 7089805170105661411}
   - component: {fileID: 7089805170105661408}
   - component: {fileID: 7089805170105661410}
-  - component: {fileID: 6636863535282952904}
-  - component: {fileID: 6636863535282952905}
   - component: {fileID: 6636863535282952907}
   - component: {fileID: 8374611096503869144}
+  - component: {fileID: 6636863535282952904}
+  - component: {fileID: 6636863535282952905}
   - component: {fileID: -1241862855050814091}
   - component: {fileID: 3942963163880668739}
   - component: {fileID: 9166234592917253806}
@@ -116,43 +116,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 3456459966882077886, guid: 853d8ea04503ef545b02b69e448e4ab5, type: 3}
---- !u!50 &6636863535282952904
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7089805170105661438}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!70 &6636863535282952905
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7089805170105661438}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0023384094, y: -0.03039813}
-  m_Size: {x: 1.6504364, y: 2.0993896}
-  m_Direction: 0
 --- !u!114 &6636863535282952907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +174,43 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 0
   whenCloseToDestination: 0
   constrainInsideGraph: 0
+--- !u!50 &6636863535282952904
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7089805170105661438}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!70 &6636863535282952905
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7089805170105661438}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0023384094, y: -0.03039813}
+  m_Size: {x: 1.6504364, y: 2.0993896}
+  m_Direction: 0
 --- !u!114 &-1241862855050814091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,19 +223,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a306f1b1876b5541b7e31cbd9097aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runtimeData: {fileID: 11400000, guid: 2af82f39af12a564796498c567ec21c1, type: 2}
   sprite: {fileID: 7089805170909865549}
+  cratePrefab: {fileID: 8979165276760484615, guid: fd2b9047e6f208d4e8d1e9b0098b8042,
+    type: 3}
+  crateDropChance: 50
   scrapPrefab: {fileID: 8451886049845248673, guid: 7d55f5ddaba004448a33fa64abf2c068,
     type: 3}
   hitbox: {fileID: 0}
-  idleSound: {fileID: 9166234592917253806}
-  hitSound: {fileID: 1258550492719457459}
+  idleSound:
+  - {fileID: 9166234592917253806}
+  hitSound:
+  - {fileID: 1258550492719457459}
   dieSound: {fileID: -4905730574796524939}
   health: 150
   baseDamage: 20
   rb: {fileID: 0}
   anim: {fileID: 0}
-  minDrop: 90
-  maxDrop: 100
+  minDrop: 200
+  maxDrop: 300
+  expOnKill: 500
   fireballPrefab: {fileID: 4341906127163607774, guid: c6027b8fdfd07c8478f4358377dd7c97,
     type: 3}
   fireballSpawnPoint: {fileID: 2432478811870394150}
@@ -368,9 +375,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 69b2a5a5e4292f74c9271a491c7c5826, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -464,9 +471,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 28262ae7c65cd244baf788f3949471d3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -562,7 +569,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

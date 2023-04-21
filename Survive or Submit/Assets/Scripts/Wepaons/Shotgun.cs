@@ -69,14 +69,18 @@ public class Shotgun : Weapon
     {
         for (int i = 0; i < spreadCount; i++)
         {
+            //spawn bullet
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            //assign values
             bullet.GetComponent<Bullet>().setDamage(damagePerShot);
+            bullet.GetComponent<Bullet>().setLifetime(range / bulletForce);
             float spread = Random.Range(-(accuracy / 2), accuracy / 2); //bullet spread angle
             bullet.transform.Rotate(0, 0, spread);
+            //move bullet
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(bullet.transform.up * bulletForce, ForceMode2D.Impulse);
+            rb.AddForce(bullet.transform.up * bulletForce, ForceMode2D.Impulse);            
         }
-        
+        attackSound.Play();
         currMag--;
         GameEvents.InvokeUpdateWeaponUI(gameObject, weaponID);
     }

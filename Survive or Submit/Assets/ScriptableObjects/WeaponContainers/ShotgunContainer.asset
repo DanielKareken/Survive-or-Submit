@@ -18,5 +18,5 @@ MonoBehaviour:
   special: Fires a spread of projectiles
   description: High damage at close range at the cost of a low magazine size. Perfect
     for tanks.
-  cost: 150
+  levelRequired: 3
   weaponName: Shotgun

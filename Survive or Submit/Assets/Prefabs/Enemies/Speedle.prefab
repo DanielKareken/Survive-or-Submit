@@ -238,19 +238,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 350fe0c78b79da142b58d3bb9379d978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runtimeData: {fileID: 11400000, guid: 2af82f39af12a564796498c567ec21c1, type: 2}
   sprite: {fileID: 7922843137227295239}
+  cratePrefab: {fileID: 8979165276760484615, guid: fd2b9047e6f208d4e8d1e9b0098b8042,
+    type: 3}
+  crateDropChance: 15
   scrapPrefab: {fileID: 8451886049845248673, guid: 7d55f5ddaba004448a33fa64abf2c068,
     type: 3}
   hitbox: {fileID: 0}
-  idleSound: {fileID: 1307325358722861341}
-  hitSound: {fileID: 5777957553117480289}
+  idleSound:
+  - {fileID: 1307325358722861341}
+  hitSound:
+  - {fileID: 5777957553117480289}
   dieSound: {fileID: -7050638751760946661}
   health: 30
   baseDamage: 10
   rb: {fileID: 0}
   anim: {fileID: 0}
-  minDrop: 15
-  maxDrop: 20
+  minDrop: 20
+  maxDrop: 30
+  expOnKill: 150
 --- !u!114 &6020604474182180507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,8 +310,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -399,8 +406,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 09743c5bf50205949aa11547617f3fc7, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -494,9 +501,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 28262ae7c65cd244baf788f3949471d3, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -14,19 +14,15 @@ public class Bullet : MonoBehaviour
 {
     public GameObject hitEffect;
     public BulletType type;
-    protected float lifetimeTimer;
+
+    protected float _lifetime; //how long bullet lasts in world before despawning
     protected int damage;
 
-    private void Start()
+    void Update()
     {
-        lifetimeTimer = 3f;
-    }
-
-    private void FixedUpdate()
-    {
-        if(lifetimeTimer > 0)
+        if(_lifetime > 0)
         {
-            lifetimeTimer -= Time.fixedDeltaTime;
+            _lifetime -= Time.deltaTime;
         }
         else
         {
@@ -37,6 +33,11 @@ public class Bullet : MonoBehaviour
     public void setDamage(int dmg)
     {
         damage = dmg;
+    }
+
+    public void setLifetime(float lifetime)
+    {
+        _lifetime = lifetime;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -57,17 +58,21 @@ public class Bullet : MonoBehaviour
             else
             {
                 DestroyBullet();
+                print(collision.gameObject.tag);
             }
         }
     }
 
     protected void DestroyBullet()
     {
-        if(type == BulletType.AOE)
+        if(type != BulletType.LASER)
         {
-            Instantiate(hitEffect, transform.position, transform.rotation);
-        }
+            if(type == BulletType.AOE)
+            {
+                Instantiate(hitEffect, transform.localPosition, transform.rotation);
+            }
         
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }

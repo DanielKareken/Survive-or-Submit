@@ -8,16 +8,14 @@ public class Fireball : Bullet
 
     private void Start()
     {
-        lifetimeTimer = 3f;
-
         anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
-        if (lifetimeTimer > 0)
+        if (_lifetime > 0)
         {
-            lifetimeTimer -= Time.fixedDeltaTime;
+            _lifetime -= Time.fixedDeltaTime;
         }
         else
         {
