@@ -53,6 +53,7 @@
     <UnityVersion>2020.3.0f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ItemCrate.cs" />
     <Compile Include="Assets\Scripts\Wepaons\Shotgun.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
@@ -63,29 +64,38 @@
     <Compile Include="Assets\Scripts\Enemies\Ranger.cs" />
     <Compile Include="Assets\Scripts\Enemies\Leaper.cs" />
     <Compile Include="Assets\Scripts\Wepaons\Fireball.cs" />
-    <Compile Include="Assets\Scripts\GameInitializer.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UI\CompassUI.cs" />
     <Compile Include="Assets\Scripts\Scriptables\RuntimeData.cs" />
     <Compile Include="Assets\Brackeys\HealthBar\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\GameEvents.cs" />
+    <Compile Include="Assets\Scripts\Wepaons\PlasmaRifle.cs" />
     <Compile Include="Assets\Scripts\Procedural Generation\ObstacleSpawner.cs" />
     <Compile Include="Assets\links to assets.cs" />
     <Compile Include="Assets\Scripts\UI\GameOverUI.cs" />
+    <Compile Include="Assets\Scripts\Wepaons\Minigun.cs" />
+    <Compile Include="Assets\Scripts\Wepaons\SniperBullet.cs" />
+    <Compile Include="Assets\Scripts\WeaponHolder.cs" />
+    <Compile Include="Assets\Scripts\UI\LevelUpUI.cs" />
     <Compile Include="Assets\Brackeys\HealthBar\HealthBar.cs" />
     <Compile Include="Assets\Brackeys\HealthBar\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Wepaons\Bullet.cs" />
     <Compile Include="Assets\Scripts\Wepaons\Weapon.cs" />
     <Compile Include="Assets\Scripts\UI\CurrentZoneUI.cs" />
+    <Compile Include="Assets\Scripts\UI\WeaponButton.cs" />
     <Compile Include="Assets\Scripts\Procedural Generation\TileContainer.cs" />
+    <Compile Include="Assets\Scripts\RainGenerator.cs" />
     <Compile Include="Assets\Brackeys\HealthBar\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Brackeys\HealthBar\Scripts\Rotator.cs" />
-    <Compile Include="Assets\Scripts\Scriptables\MedKitContainer.cs" />
+    <Compile Include="Assets\LoadingUI.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\UI\Crosshair.cs" />
     <Compile Include="Assets\Scripts\UI\CraftingUI.cs" />
     <Compile Include="Assets\Scripts\Wepaons\Axe.cs" />
+    <Compile Include="Assets\Scripts\Wepaons\PlasmaLaser.cs" />
     <Compile Include="Assets\Scripts\Procedural Generation\Obstacle.cs" />
     <Compile Include="Assets\Scripts\Scriptables\WeaponContainer.cs" />
+    <Compile Include="Assets\Scripts\UI\PlayerLevelBar.cs" />
     <Compile Include="Assets\Scripts\Player\VCamHelper.cs" />
     <Compile Include="Assets\Scripts\PerlinNoiseGenerator.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerUI.cs" />
@@ -95,8 +105,29 @@
     <Compile Include="Assets\Brackeys\HealthBar\Billboard.cs" />
   </ItemGroup>
   <ItemGroup>
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\dungeon\credit.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\Help for SOS.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.0f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
